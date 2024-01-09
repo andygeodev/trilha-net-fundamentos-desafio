@@ -7,12 +7,13 @@ namespace DesafioFundamentos.Models
         private decimal precoInicial = 0;
         private decimal precoPorHora = 0;
         private List<string> veiculos = new List<string>();
-        public int VagasDoEstacionamento()
-        {
-            int vagas = veiculos.Count;
-            return vagas; 
-        }
         
+        
+        // public int VagasDoEstacionamento()
+        // {
+        //     int vagas = veiculos.Count;
+        //     return vagas; }
+            
         public Estacionamento(decimal precoInicial, decimal precoPorHora)
         {
             this.precoInicial = precoInicial;
@@ -22,14 +23,14 @@ namespace DesafioFundamentos.Models
         public void AdicionarVeiculo()
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
-            for (int count = 0; count < veiculos.Count; count++)
-            {
-            Console.WriteLine($"Digite a placa do veículo para estacionar:\n" +
-            $"Vagas disponíveis {veiculos[count]}");
-            string placaDoAuto = Console.ReadLine();
-            veiculos.Add(placaDoAuto);
-            }
+            // for (int count = 0; count < veiculos.Count; count++)
             
+            Console.WriteLine("Digite a placa do veículo para estacionar:");
+            
+            // $"Vagas disponíveis {veiculos[count]}");
+            string placa = Console.ReadLine();
+            veiculos.Add(placa);            
+
         }
 
         public void RemoverVeiculo()
@@ -52,7 +53,9 @@ namespace DesafioFundamentos.Models
                 decimal valorTotal = precoInicial + precoPorHora * horas; 
 
                 // TODO: Remover a placa digitada da lista de veículos
+#pragma warning disable CS8604 // Possível argumento de referência nula.
                 veiculos.Remove(placa);
+#pragma warning restore CS8604 // Possível argumento de referência nula.
 
                 Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
